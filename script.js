@@ -1,17 +1,20 @@
-const allowedNames = ["admin"]; // Hardcoded list of allowed names
+const allowedNames = ["ankita", "ankita biswal", "kita", "kittu", "chingu"]; // Hardcoded list of allowed names
 const storageKey = "valentine_auth_user";
 
 // Check Authentication
 function checkAuth() {
     const user = localStorage.getItem(storageKey);
-    const path = window.location.pathname;
+    const path = window.location.pathname.toLowerCase();
 
     // Only redirect AWAY from protected pages if not logged in
     if (path.includes('valentine.html') || path.includes('success.html')) {
         if (!user) {
             window.location.href = "index.html";
-        } else if (!allowedNames.includes(user)) {
-            window.location.href = "warning.html";
+        } else {
+            const normalizedUser = user.trim().toLowerCase();
+            if (!allowedNames.includes(normalizedUser)) {
+                window.location.href = "warning.html";
+            }
         }
     }
 }

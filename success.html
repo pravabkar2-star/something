@@ -7,25 +7,32 @@
     <title>YAY! 🎉</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <script>
-        (function () {
-            const user = localStorage.getItem("valentine_auth_user");
-            const allowed = ["admin"];
-            if (!user || !allowed.includes(user.toLowerCase())) {
-                window.location.href = "warning.html";
-            }
-        })();
-    </script>
+
 </head>
 
 <body>
     <div class="container">
         <h1>Congratulations! 🎉</h1>
         <p>You are stuck with me forever and ever! ❤️</p>
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNnd4NXIxZnF4eGZ4ZnF4ZnF4ZnF4ZnF4ZnF4ZnF4ZnF4ZnF4ZnF4eiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MDJ9IbxxvDUQM/giphy.gif"
-            alt="Cute Cat" style="width: 100%; max-width: 300px; border-radius: 10px; margin-top: 20px;">
+        <p>I Love You Kittu ❤️</p>
+        <div id="media-container"></div>
     </div>
     <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const randomNum = Math.floor(Math.random() * 5); // 0 to 4
+            const container = document.getElementById('media-container');
+
+            if (randomNum === 0) {
+                container.innerHTML = `<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNnd4NXIxZnF4eGZ4ZnF4ZnF4ZnF4ZnF4ZnF4ZnF4ZnF4ZnF4eiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MDJ9IbxxvDUQM/giphy.gif" alt="Cute Cat" style="width: 100%; max-width: 300px; border-radius: 10px; margin-top: 20px;">`;
+            } else {
+                container.innerHTML = `<video controls autoplay loop muted playsinline style="width: 100%; max-width: 300px; border-radius: 10px; margin-top: 20px;">
+                                        <source src="assets/vid${randomNum}.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                       </video>`;
+            }
+        });
+    </script>
     <script>
         // Trigger confetti on load
         window.addEventListener('load', () => {
